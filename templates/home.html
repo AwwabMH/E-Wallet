@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Balance Dashboard</title>
+    <style>
+        body {
+            background-color: #9AD1D4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Adjust the height as needed */
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+    
+        .squares-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+    
+        .square {
+            width: 250px;
+            height: 250px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+    
+        .balance {
+            font-size: 24px;
+        }
+    
+        .button-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+    
+        .top-up-button,
+        .transfer-button,
+        .convert-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .dashboard-title {
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 45px;
+        }
+
+        .logo-image {
+            max-width: 2000px;
+        }
+
+        .signup-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .signup-button a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1 class="dashboard-title">Dashboard</h1>
+    <div class="squares-wrapper">
+        {% for balance in balances %}
+        <div class="square">
+            <div class="balance">{{ balance }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="button-group">
+        <form action="/transfer" method="POST">
+            <button class="transfer-button" type="submit">Transfer</button>
+        </form>
+        <form action="/convert" method="POST">
+            <button class="convert-button" type="submit">Convert</button>
+        </form>
+        <form action="/topup" method="POST">
+            <button class="top-up-button" type="submit">Top-up</button>
+        </form>
+    </div>
+    <div class="signup-button">
+        <a href="/login">Log-Out</a>
+    </div>
+</body>
+</html>

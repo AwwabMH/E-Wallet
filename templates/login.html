@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-wallet Login Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #9AD1D4;;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        form {
+            margin-bottom: 20px;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+
+        .input-group {
+          color: green;
+          margin-bottom: 20px;
+        }
+        
+        .signup-button {
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .signup-button a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Please login</h1>
+        <form action="/login" method="post">
+            <input type="text" placeholder="Username" name="username" value="{{ request.form.username }}" required>
+            <input type="password" placeholder="Password" name="password" value="{{ request.form.password }}" required>
+            <input class="btn btn-primary" type="submit" value="Login">
+        </form>
+        <div class="signup-button">
+            <a href="/signup">Sign-Up</a>
+        </div>
+        {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}</p>
+        {% endif %}
+        <div class="input-group">
+          <label for="status"></label>
+          <label id="status" name="status">{{ status }}</label>
+        </div>
+    </div>
+</body>
+</html>
